@@ -12,10 +12,6 @@ class Person
 	  @@health_points
 	end
 
-	def to_s
-  	"#{@name}. Has a strength of #{@strength} units."
-    end
-
 	def initialize(name, strength)
 	  @name = name
 	  @strength = strength
@@ -27,7 +23,7 @@ class Person
 	end
 
 	def run(miles)
-	  @caffeine_units = @caffeine_units - (1 * miles)
+	  @@caffeine_units -= 2 * miles.to_i
 	end
 
 	def drink_coffee
@@ -42,6 +38,10 @@ end
 class PowerRanger < Person
 	@@strength = 50
 
+	def self.strength
+		@@strength
+	end
+
 	def initialize(color)
 	  @color = color
 	end
@@ -53,14 +53,17 @@ class PowerRanger < Person
 
 	def punch
 	  @@caffeine_units -= 5
+	  puts "#{@caffeine_units}"
 	end
 
 	def kick
 	  @@caffeine_units -= 10
+	  puts "#{@@caffeine_units}"
 	end
 
 	def rest
 	  @@caffeine_units += 5
+	  puts "#{@@caffeine_units}"
 	end
 end
 
@@ -70,15 +73,8 @@ end
 # red = Person.new("red", "20")
 # red.run('3')
 
-red = PowerRanger.new("Yellow")
-puts red.kick
-puts red.kick
-puts red.workout
-puts red.drink_coffee
-puts red.drink_coffee
-puts red.drink_coffee
-puts red.drink_coffee
-puts red.drink_coffee
-puts red.drink_coffee
 
+red = Person.new("Greg", "20")
+puts red.drink_coffee
+puts red.run("15")
 
