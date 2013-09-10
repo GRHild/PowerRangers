@@ -37,6 +37,7 @@ end
 
 class PowerRanger < Person
 	@@strength = 50
+	@@health_points = 150
 
 	def self.strength
 		@@strength
